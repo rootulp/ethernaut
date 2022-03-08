@@ -50,3 +50,9 @@ await contract.method7123949(); // "If you know the password, submit it to authe
 await contract.password(); // "ethernaut0"
 await contract.authenticate("ethernaut0");
 ```
+
+### 1. Fallback
+- `0x7109709ECfa91a80626fF3989D68f67F5b1DD12D` is a special contract address. See [cheatcodes](https://onbjerg.github.io/foundry-book/forge/cheatcodes.html).
+
+### 2. Fallout
+- Prefer `constructor()` over contract name constructor to avoid typos
