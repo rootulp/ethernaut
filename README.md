@@ -9,6 +9,10 @@ Solutions to [Ethernaut](https://ethernaut.openzeppelin.com) exercises.
 If you are new to [Ethernaut](https://ethernaut.openzeppelin.com), you can get started with [this video](https://www.youtube.com/watch?v=kZb6Qjlgybo).
 If you are new to [Foundry](https://github.com/gakonst/foundry), you can get started with [foundry-book](https://onbjerg.github.io/foundry-book/).
 
+## Credits
+1. [ethernaut-x-foundry](https://github.com/ciaranmcveigh5/ethernaut-x-foundry)
+1. [Ethernaut x Foundry - 0x0 Hello Ethernaut](https://eval.hashnode.dev/ethernaut-x-foundry-0x0-hello-ethernaut)
+
 ## Local Development
 
 1. [Install foundry](https://github.com/gakonst/foundry#installation)
