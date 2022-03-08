@@ -50,5 +50,3 @@ await contract.method7123949(); // "If you know the password, submit it to authe
 await contract.password(); // "ethernaut0"
 await contract.authenticate("ethernaut0");
 ```
-
-### 1. Fallback
