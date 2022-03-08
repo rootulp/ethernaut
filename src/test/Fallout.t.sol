@@ -30,6 +30,8 @@ contract FalloutTest is DSTest {
         Fallout level = Fallout(payable(levelAddress));
 
         // Solution
+        level.Fal1out();
+        assertEq(level.owner(), eoaAddress);
 
         // Verify
         bool levelSuccessfullyPassed = ethernaut.submitLevelInstance(payable(levelAddress));
