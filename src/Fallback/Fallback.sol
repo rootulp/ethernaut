@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.10; // Latest solidity version
+pragma solidity ^0.8.12;
 
 import 'openzeppelin-contracts/contracts/utils/math/SafeMath.sol'; // Path change of openzeppelin contract
 
@@ -9,7 +9,7 @@ contract Fallback {
   mapping(address => uint) public contributions;
   address payable public owner;
 
-  constructor() public {
+  constructor() {
     owner = payable(msg.sender); // Type issues must be payable address
     contributions[msg.sender] = 1000 * (1 ether);
   }
