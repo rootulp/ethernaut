@@ -56,3 +56,6 @@ await contract.authenticate("ethernaut0");
 
 ### 2. Fallout
 - Prefer `constructor()` over contract name constructor to avoid typos
+
+### 3. CoinFlip
+- Don't rely on blockhash as a source of randomness. Consider [VRF](https://docs.chain.link/docs/chainlink-vrf/) instead.
