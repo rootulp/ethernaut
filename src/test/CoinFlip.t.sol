@@ -22,14 +22,13 @@ contract CoinFlipTest is DSTest {
         ethernaut.registerLevel(coinFlipFactory);
         vm.startPrank(tx.origin);
         address levelAddress = ethernaut.createLevelInstance(coinFlipFactory);
-        CoinFlip level = CoinFlip(payable(levelAddress));
 
         // Solution
-        vm.roll(10);
+        vm.roll(0);
         CoinFlipSolution coinFlipSolution = new CoinFlipSolution(payable(levelAddress));
 
         for (uint i=1; i <= 10; i++) {
-            vm.roll(10 + i);
+            vm.roll(i);
             coinFlipSolution.solve();
         }
 
