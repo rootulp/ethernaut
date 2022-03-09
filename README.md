@@ -27,10 +27,6 @@ forge test
 
 I'd appreciate any feedback via [issues](https://github.com/rootulp/exercism/issues/new).
 
-## License
-
-[MIT](https://rootulp.mit-license.org/) © [Rootul Patel](https://rootulp.com)
-
 ## Solutions
 
 Level | Name              | Contract                                   | Solution                                                           |
