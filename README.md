@@ -33,11 +33,13 @@ I'd appreciate any feedback via [issues](https://github.com/rootulp/exercism/iss
 
 ## Solutions
 
-| Level              | Contract                                   | Solution                                                           |
-| ------------------ | ------------------------------------------ | ------------------------------------------------------------------ |
-| 0. Hello Ethernaut | 0x8A18f61202Bb364e6277B42669C123E32D5e2D2d | 0xe6351327acfbc8f8063711d13c9a066e1a135fb40ce1de2dda135fc9485fe3b7 |
+Level | Name              | Contract                                   | Solution                                                           |
+----- | ----------------- | ------------------------------------------ | ------------------------------------------------------------------ |
+0     | Hello Ethernaut   | 0x8A18f61202Bb364e6277B42669C123E32D5e2D2d | 0xe6351327acfbc8f8063711d13c9a066e1a135fb40ce1de2dda135fc9485fe3b7 |
 
-### 0. Hello Ethernaut
+## Notes
+
+### Hello Ethernaut
 
 ```javascript
 await contract.info(); // "You will find what you need in info1()."
@@ -51,11 +53,11 @@ await contract.password(); // "ethernaut0"
 await contract.authenticate("ethernaut0");
 ```
 
-### 1. Fallback
+### Fallback
 - `0x7109709ECfa91a80626fF3989D68f67F5b1DD12D` is a special contract address. See [cheatcodes](https://onbjerg.github.io/foundry-book/forge/cheatcodes.html).
 
-### 2. Fallout
-- Prefer `constructor()` over contract name constructor to avoid typos
+### Fallout
+- Prefer `constructor()` over contract name constructor to avoid typos.
 
-### 3. CoinFlip
+### CoinFlip
 - Don't rely on blockhash as a source of randomness. Consider [VRF](https://docs.chain.link/docs/chainlink-vrf/) instead.
