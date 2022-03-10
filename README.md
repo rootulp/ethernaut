@@ -64,9 +64,10 @@ await contract.authenticate("ethernaut0");
 - `0x7109709ECfa91a80626fF3989D68f67F5b1DD12D` is a special contract address. See [cheatcodes](https://onbjerg.github.io/foundry-book/forge/cheatcodes.html).
 - Used Remix to call contribute 1 wei, transact with 1 wei (triggers fallback), then withdraw
 - In Remix, replace `@openzepplin` prefix with URL to repo
-```solidity
-// -import '@openzeppelin/contracts/math/SafeMath.sol';
-// +import 'https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v3.4.0/contracts/math/SafeMath.sol';
+
+```diff
+-import '@openzeppelin/contracts/math/SafeMath.sol';
++import 'https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v3.4.0/contracts/math/SafeMath.sol';
 ```
 
 ### Fallout
