@@ -11,6 +11,7 @@ contract CoinFlipSolution {
         coinFlip = CoinFlip(levelAddress);
     }
 
+    // solve must be called 10 times to solve this level
     function solve() external payable {
         uint256 blockValue = uint256(blockhash(block.number - 1));
         uint256 flip = blockValue / FACTOR;
