@@ -43,6 +43,7 @@ Level | Name              | Contract                                   | Solutio
 0     | Hello Ethernaut   | 0x8A18f61202Bb364e6277B42669C123E32D5e2D2d | 0xe6351327acfbc8f8063711d13c9a066e1a135fb40ce1de2dda135fc9485fe3b7 |
 1     | Fallback          | 0x519AdEA92a0deE916489431c2f6473B44b570F3f | 0x706b0bf05a40a171461540f5eb96875a6f41d8a5ef79b10110cf600b43d95976 |
 2     | Fallout           | 0x4D341BF4bf10D415c0Ed61293629394546ca5670 | 0xb2909f15f72e8ec92d9419a2ac44afb9335ab41a6855424e62496ee64daf91d8 |
+3     | Coin Flip         | 0x4dF32584890A0026e56f7535d0f2C6486753624f |  |
 
 ## Notes
 
